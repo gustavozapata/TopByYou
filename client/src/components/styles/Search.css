@@ -1,0 +1,52 @@
+.Search {
+  width: 90%;
+  border-radius: 5px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.Search > div {
+  display: inline-block;
+}
+
+/* SearchBar */
+.SearchBar {
+  margin-top: 20px;
+}
+.SearchBar form {
+  margin: 20px auto;
+}
+#searchInput {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  margin-right: 5px;
+  padding: 5px 2px 5px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--dark-grey);
+  width: 250px;
+  height: 25px;
+  outline: none;
+}
+
+/* RecentSearches */
+.RecentSearches {
+  /* width: 65%; */
+  /* border: 1px solid black; */
+  text-align: left;
+}
+.RecentSearches h3 {
+  color: #343434;
+  margin: 0 0 5px 0;
+}
+.recent-items {
+  width: auto;
+  border: 1px solid var(--border-grey);
+  border-radius: 8px;
+}
+.recent-items button {
+  margin: 10px 20px;
+}
+button.recent-selected {
+  background-color: var(--light-purple);
+  color: #000000;
+}

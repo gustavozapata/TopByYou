@@ -1,14 +1,14 @@
+.Product {
+  text-align: left;
+  width: 90%;
+  margin: 50px auto;
+}
 img {
-  width: 100px;
+  width: 80px;
 }
 h1 {
   font-weight: 900;
   font-size: 2.3em;
-}
-.Laptops {
-  text-align: left;
-  width: 90%;
-  margin: 50px auto;
 }
 .items-container {
   display: flex;
@@ -39,7 +39,7 @@ h1 {
 }
 .item span {
   display: inline-block;
-  padding: 6px;
+  padding: 3px 6px;
   background-color: var(--purple);
   color: white;
   font-weight: 500;

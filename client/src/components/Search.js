@@ -1,12 +1,13 @@
 import React from "react";
+import SearchBar from "./SearchBar";
+import RecentSearches from "./RecentSearches";
+import "./styles/Search.css";
 
-export default function Search() {
+export default function Search(props) {
   return (
     <div className="Search">
-      <form>
-        <input id="searchInput" placeholder="Search product" />
-        <button className="button">Search</button>
-      </form>
+      <RecentSearches selectRecent={props.selectRecent} />
+      <SearchBar />
     </div>
   );
 }
