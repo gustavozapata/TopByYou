@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Product.css";
 
 export default function Product(props) {
   const [currentItem, setCurrentItem] = useState({});
 
+  useEffect(() => {}, []);
+
   const selectItem = item => {
     const { id, name, image, votes, description } = item;
+
     setCurrentItem({
       id,
       name,
@@ -29,7 +32,10 @@ export default function Product(props) {
                 key={item.id}
                 onClick={() => selectItem(item)}
               >
-                <img src={require(`../images/laptops/${item.image}`)} />
+                <img
+                  src={require(`../images/laptops/${item.image}`)}
+                  alt={item.image}
+                />
                 <div
                   className={`${
                     currentItem.id === item.id ? "item-selected" : ""
@@ -50,7 +56,10 @@ export default function Product(props) {
         <div className="item-description">
           {currentItem.id ? (
             <div>
-              <img src={require(`../images/laptops/${currentItem.image}`)} />
+              <img
+                src={require(`../images/laptops/${currentItem.image}`)}
+                alt={currentItem.image}
+              />
               <h3>{currentItem.name}</h3>
               <p>{currentItem.description}</p>
               <button className="button">Buy</button>

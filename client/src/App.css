@@ -69,15 +69,17 @@ nav ul li {
   font-weight: 700;
   display: inline;
   margin: 0 20px;
+  cursor: pointer;
 }
 .active {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: var(--purple);
 }
 
 /* VIEWPORT */
-#viewport {
-  /* height: 100vh; */
-}
+/* #viewport { */
+/* height: 100vh; */
+/* } */
 
 /* Footer */
 .Footer {

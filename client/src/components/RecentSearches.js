@@ -6,19 +6,14 @@ export default function RecentSearches(props) {
     <div className="RecentSearches">
       <h3>Recent Searches</h3>
       <div className="recent-items">
-        <RecentItem
-          item="Laptops"
-          isSelected={true}
-          selectRecent={() => props.selectRecent("laptops")}
-        />
-        <RecentItem
-          item="Mice"
-          selectRecent={() => props.selectRecent("mice")}
-        />
-        <RecentItem
-          item="Keyboards"
-          selectRecent={() => props.selectRecent("keyboards")}
-        />
+        {props.recentSearches.map((item, index) => (
+          <RecentItem
+            key={index}
+            item={item.product}
+            isSelected={props.isSelected === item.product}
+            selectRecent={() => props.selectRecent(item.product)}
+          />
+        ))}
       </div>
     </div>
   );
