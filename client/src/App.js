@@ -6,9 +6,6 @@ import Search from "./components/Search";
 import Product from "./components/Product";
 import Footer from "./components/Footer";
 
-//pages
-import About from "./pages/About";
-
 //data
 import { laptops } from "./data/laptops";
 import { mice } from "./data/mice";
@@ -18,7 +15,6 @@ import "./App.css";
 
 function App() {
   const [product, setProduct] = useState({});
-  const [currentPage, setCurrentPage] = useState("Home");
 
   const selectRecent = item => {
     let productName = "";
@@ -47,32 +43,15 @@ function App() {
     });
   };
 
-  const goTo = page => {
-    setCurrentPage(page);
-  };
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case "Home":
-        return (
-          <>
-            <Search selectRecent={selectRecent} isSelected={product.name} />
-            <Product productName={product.name} product={product.items} />
-          </>
-        );
-      case "About":
-        return <About />;
-      default:
-        return;
-    }
-  };
-
   useEffect(() => {}, [product]);
 
   return (
     <div className="App">
-      <Header goTo={goTo} active={currentPage} />
-      <div id="viewport">{renderPage()}</div>
+      <Header />
+      <div id="viewport">
+        <Search selectRecent={selectRecent} isSelected={product.name} />
+        <Product productName={product.name} product={product.items} />
+      </div>
       <Footer />
     </div>
   );

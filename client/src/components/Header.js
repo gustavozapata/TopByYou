@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Header(props) {
-  const { active } = props;
   return (
     <header className="Header">
       <a href="http://localhost:3000">
@@ -11,18 +10,8 @@ export default function Header(props) {
       </a>
       <nav>
         <ul>
-          <li
-            onClick={() => props.goTo("Home")}
-            className={active === "Home" ? "active" : ""}
-          >
-            Home
-          </li>
-          <li
-            onClick={() => props.goTo("About")}
-            className={active === "About" ? "active" : ""}
-          >
-            About
-          </li>
+          <li className="active">Home</li>
+          <li>About</li>
           <li>Contact</li>
           <li>Login</li>
         </ul>
