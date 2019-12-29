@@ -71,7 +71,10 @@ nav ul li {
   margin: 0 20px;
   cursor: pointer;
 }
-.active {
+nav ul a {
+  text-decoration: none;
+}
+ul .active {
   /* text-decoration: underline; */
   color: var(--purple);
 }

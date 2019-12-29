@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //components
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Product from "./components/Product";
 import Footer from "./components/Footer";
+
+//pages
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
 
 //data
 import { laptops } from "./data/laptops";
@@ -46,14 +52,32 @@ function App() {
   useEffect(() => {}, [product]);
 
   return (
-    <div className="App">
-      <Header />
-      <div id="viewport">
-        <Search selectRecent={selectRecent} isSelected={product.name} />
-        <Product productName={product.name} product={product.items} />
+    <Router>
+      <div className="App">
+        <Header />
+        <div id="viewport">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <>
+                  <Search
+                    selectRecent={selectRecent}
+                    isSelected={product.name}
+                  />
+                  <Product productName={product.name} product={product.items} />
+                </>
+              )}
+            />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/login" component={Login} />
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
 }
 
