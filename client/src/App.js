@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 
 //pages
 import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
 
 //data
 import { laptops } from "./data/laptops";
@@ -62,6 +64,10 @@ function App() {
         );
       case "About":
         return <About />;
+      case "Contact":
+        return <Contact />;
+      case "Login":
+        return <Login />;
       default:
         return;
     }
