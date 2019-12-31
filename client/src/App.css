@@ -77,9 +77,9 @@ nav ul li {
 }
 
 /* VIEWPORT */
-/* #viewport { */
-/* height: 100vh; */
-/* } */
+#viewport {
+  min-height: 100vh;
+}
 
 /* Footer */
 .Footer {

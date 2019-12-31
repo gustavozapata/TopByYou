@@ -25,7 +25,7 @@ export default function Search(props) {
         isSelected={props.isSelected}
         recentSearches={recentSearches}
       />
-      <SearchBar />
+      <SearchBar selectRecent={props.selectRecent} />
     </div>
   );
 }

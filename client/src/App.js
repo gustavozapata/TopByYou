@@ -77,8 +77,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header goTo={goTo} active={currentPage} />
-      <div id="viewport">{renderPage()}</div>
+      <div id="viewport">
+        <Header goTo={goTo} active={currentPage} />
+        {renderPage()}
+      </div>
       <Footer />
     </div>
   );
