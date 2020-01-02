@@ -4,7 +4,11 @@ export default function SearchSuggestions(props) {
   return (
     <div className="SearchSuggestions">
       {props.suggestions.map((item, index) => (
-        <p key={index} onClick={() => props.selectRecent(item)}>
+        <p
+          key={index}
+          onClick={() => props.selectRecent(item)}
+          className={item === props.activeSuggestion ? "activeSuggestion" : ""}
+        >
           {item}
         </p>
       ))}

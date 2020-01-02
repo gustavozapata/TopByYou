@@ -67,6 +67,7 @@ button.recent-selected {
   padding: 8px 2px 8px 8px;
   margin: 0;
 }
-.SearchSuggestions p:hover {
+.SearchSuggestions p:hover,
+.activeSuggestion {
   background-color: var(--light-purple);
 }

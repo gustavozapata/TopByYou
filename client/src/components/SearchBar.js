@@ -4,27 +4,54 @@ import { products } from "../data/products";
 
 export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeSuggestion, setActiveSuggestion] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [activeItem, setActiveItem] = useState(0);
 
   const suggestProducts = e => {
-    setSearchTerm(e.target.value);
+    const searchTerm = e.target.value;
     setSuggestions(
       products.filter(
-        item =>
-          item.toLowerCase().substr(0, searchTerm.length) ===
+        suggestion =>
+          suggestion.toLowerCase().substr(0, searchTerm.length) ===
           searchTerm.toLowerCase()
-        // item.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
+    setSearchTerm(searchTerm);
   };
 
-  const navigate = e => {
+  const moveArrow = e => {
     if (searchTerm.length > 0) {
+      let activeitem = activeItem;
+
+      //DOWN
       if (e.keyCode === 40) {
-        console.log("down");
+        if (activeitem === suggestions.length) {
+          activeitem = -1;
+        }
+        if (activeitem < 0) {
+          e.target.value = searchTerm;
+        } else {
+          e.target.value = suggestions[activeitem];
+        }
+        setActiveItem(activeitem + 1);
+
+        //UP
       } else if (e.keyCode === 38) {
-        console.log("up");
+        if (activeSuggestion === "") {
+          activeitem = suggestions.length - 1;
+        }
+        if (activeitem < 0) {
+          activeitem = suggestions.length;
+        }
+        if (activeitem >= suggestions.length) {
+          e.target.value = searchTerm;
+        } else {
+          e.target.value = suggestions[activeitem];
+        }
+        setActiveItem(activeitem - 1);
       }
+      setActiveSuggestion(suggestions[activeitem]);
     }
   };
 
@@ -35,13 +62,15 @@ export default function SearchBar(props) {
           id="searchInput"
           placeholder="Search product"
           autoComplete="off"
-          onKeyUp={suggestProducts}
-          onKeyDown={navigate}
+          onChange={suggestProducts}
+          onKeyDown={moveArrow}
+          // value={activeSuggestion}
         />
         <button className="button">Search</button>
-        {searchTerm && (
+        {searchTerm && suggestions.length > 0 && (
           <SearchSuggestions
             suggestions={suggestions}
+            activeSuggestion={activeSuggestion}
             selectRecent={props.selectRecent}
           />
         )}
