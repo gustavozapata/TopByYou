@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 //components
 import Header from "./components/Header";
 import Search from "./components/Search";
+import NoSearchResults from "./components/NoSearchResults";
 import Product from "./components/Product";
 import Footer from "./components/Footer";
 
@@ -21,8 +22,10 @@ import "./App.css";
 function App() {
   const [product, setProduct] = useState({});
   const [currentPage, setCurrentPage] = useState("Home");
+  const [noResult, setNoResult] = useState(false);
 
   const selectRecent = item => {
+    setNoResult(false);
     let productName = "";
     let products = [];
 
@@ -40,6 +43,9 @@ function App() {
         products = keyboards;
         break;
       default:
+        setNoResult(true);
+        productName = item;
+        products = [];
         break;
     }
 
@@ -59,7 +65,11 @@ function App() {
         return (
           <>
             <Search selectRecent={selectRecent} isSelected={product.name} />
-            <Product productName={product.name} product={product.items} />
+            {noResult ? (
+              <NoSearchResults resultName={product.name} />
+            ) : (
+              <Product productName={product.name} products={product.items} />
+            )}
           </>
         );
       case "About":
@@ -72,8 +82,6 @@ function App() {
         return;
     }
   };
-
-  useEffect(() => {}, [product]);
 
   return (
     <div className="App">

@@ -64,3 +64,10 @@ h1 {
   width: 220px;
   margin-top: 20px;
 }
+.no-product {
+  text-align: center;
+  margin: 20px auto;
+}
+.no-product img {
+  width: 800px;
+}

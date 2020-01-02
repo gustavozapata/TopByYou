@@ -34,7 +34,9 @@ export default function SearchBar(props) {
         } else {
           e.target.value = suggestions[activeitem];
         }
+        // activeitem = activeitem + 1
         setActiveItem(activeitem + 1);
+        setActiveSuggestion(suggestions[activeitem]);
 
         //UP
       } else if (e.keyCode === 38) {
@@ -49,22 +51,29 @@ export default function SearchBar(props) {
         } else {
           e.target.value = suggestions[activeitem];
         }
+        // activeitem = activeitem + 1
         setActiveItem(activeitem - 1);
+        setActiveSuggestion(suggestions[activeitem]);
       }
-      setActiveSuggestion(suggestions[activeitem]);
     }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.selectRecent(searchTerm);
+    setSearchTerm("");
   };
 
   return (
     <div className="SearchBar">
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           id="searchInput"
           placeholder="Search product"
           autoComplete="off"
           onChange={suggestProducts}
           onKeyDown={moveArrow}
-          // value={activeSuggestion}
+          // value={searchTerm}
         />
         <button className="button">Search</button>
         {searchTerm && suggestions.length > 0 && (
