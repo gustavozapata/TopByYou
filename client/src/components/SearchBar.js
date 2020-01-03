@@ -51,7 +51,7 @@ export default function SearchBar(props) {
         } else {
           e.target.value = suggestions[activeitem];
         }
-        // activeitem = activeitem + 1
+        // activeitem = activeitem - 1
         setActiveItem(activeitem - 1);
         setActiveSuggestion(suggestions[activeitem]);
       }
