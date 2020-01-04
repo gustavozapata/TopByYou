@@ -4,7 +4,7 @@ import { products } from "../data/products";
 
 export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeSuggestion, setActiveSuggestion] = useState("");
+  const [currentTerm, setCurrentTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [activeItem, setActiveItem] = useState(0);
 
@@ -18,6 +18,7 @@ export default function SearchBar(props) {
       )
     );
     setSearchTerm(searchTerm);
+    setCurrentTerm(searchTerm);
   };
 
   const moveArrow = e => {
@@ -26,34 +27,34 @@ export default function SearchBar(props) {
 
       //DOWN
       if (e.keyCode === 40) {
+        //normal flow
+        if (activeitem >= 0) {
+          setSearchTerm(suggestions[activeitem]);
+        }
+        //when reach bottom of list
         if (activeitem === suggestions.length) {
           activeitem = -1;
+          setSearchTerm(currentTerm);
         }
-        if (activeitem < 0) {
-          e.target.value = searchTerm;
-        } else {
-          e.target.value = suggestions[activeitem];
-        }
-        // activeitem = activeitem + 1
-        setActiveItem(activeitem + 1);
-        setActiveSuggestion(suggestions[activeitem]);
+        setActiveItem(++activeitem);
 
         //UP
       } else if (e.keyCode === 38) {
-        if (activeSuggestion === "") {
-          activeitem = suggestions.length - 1;
+        //normal flow
+        if (activeitem <= suggestions.length) {
+          setSearchTerm(suggestions[activeitem]);
         }
+        //when reach top of list
         if (activeitem < 0) {
           activeitem = suggestions.length;
+          setSearchTerm(currentTerm);
         }
-        if (activeitem >= suggestions.length) {
-          e.target.value = searchTerm;
-        } else {
-          e.target.value = suggestions[activeitem];
+        //first up
+        if (searchTerm === currentTerm) {
+          activeitem = suggestions.length - 1;
+          setSearchTerm(suggestions[activeitem]);
         }
-        // activeitem = activeitem - 1
-        setActiveItem(activeitem - 1);
-        setActiveSuggestion(suggestions[activeitem]);
+        setActiveItem(--activeitem);
       }
     }
   };
@@ -62,6 +63,7 @@ export default function SearchBar(props) {
     e.preventDefault();
     props.selectRecent(searchTerm);
     setSearchTerm("");
+    setActiveItem(0);
   };
 
   return (
@@ -73,13 +75,13 @@ export default function SearchBar(props) {
           autoComplete="off"
           onChange={suggestProducts}
           onKeyDown={moveArrow}
-          // value={searchTerm}
+          value={searchTerm}
         />
         <button className="button">Search</button>
         {searchTerm && suggestions.length > 0 && (
           <SearchSuggestions
             suggestions={suggestions}
-            activeSuggestion={activeSuggestion}
+            activeSuggestion={searchTerm}
             selectRecent={props.selectRecent}
           />
         )}
