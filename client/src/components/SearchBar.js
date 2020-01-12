@@ -6,7 +6,7 @@ export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentTerm, setCurrentTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(-1);
 
   const suggestProducts = e => {
     const searchTerm = e.target.value;
@@ -28,33 +28,35 @@ export default function SearchBar(props) {
       //DOWN
       if (e.keyCode === 40) {
         //normal flow
-        if (activeitem >= 0) {
+        if (activeitem <= suggestions.length) {
+          setActiveItem(++activeitem);
           setSearchTerm(suggestions[activeitem]);
         }
         //when reach bottom of list
         if (activeitem === suggestions.length) {
           activeitem = -1;
+          setActiveItem(activeitem);
           setSearchTerm(currentTerm);
         }
-        setActiveItem(++activeitem);
 
         //UP
       } else if (e.keyCode === 38) {
         //normal flow
-        if (activeitem <= suggestions.length) {
+        if (activeitem > 0) {
+          setActiveItem(--activeitem);
           setSearchTerm(suggestions[activeitem]);
         }
-        //when reach top of list
-        if (activeitem < 0) {
-          activeitem = suggestions.length;
+        if (activeItem === 0) {
+          activeitem = -1;
+          setActiveItem(activeitem);
           setSearchTerm(currentTerm);
-        }
-        //first up
-        if (searchTerm === currentTerm) {
+
+          //when reaches top of the list
+        } else if (activeitem < 0) {
           activeitem = suggestions.length - 1;
+          setActiveItem(activeitem);
           setSearchTerm(suggestions[activeitem]);
         }
-        setActiveItem(--activeitem);
       }
     }
   };
