@@ -6,7 +6,7 @@ export default function SearchSuggestions(props) {
       {props.suggestions.map((item, index) => (
         <p
           key={index}
-          onClick={() => props.selectRecent(item)}
+          onClick={() => props.selectRecent(item.toLowerCase())}
           className={item === props.activeSuggestion ? "activeSuggestion" : ""}
         >
           {item}

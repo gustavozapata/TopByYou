@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchSuggestions from "./SearchSuggestions";
 import { products } from "../data/products";
 
@@ -7,6 +7,10 @@ export default function SearchBar(props) {
   const [currentTerm, setCurrentTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [activeItem, setActiveItem] = useState(-1);
+
+  useEffect(() => {
+    setSearchTerm("");
+  }, [props.selectRecent]);
 
   const suggestProducts = e => {
     const searchTerm = e.target.value;
@@ -63,9 +67,9 @@ export default function SearchBar(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.selectRecent(searchTerm);
+    props.selectRecent(searchTerm.toLocaleLowerCase());
     setSearchTerm("");
-    setActiveItem(0);
+    setActiveItem(-1);
   };
 
   return (

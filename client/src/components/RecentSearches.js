@@ -9,9 +9,9 @@ export default function RecentSearches(props) {
         {props.recentSearches.map((item, index) => (
           <RecentItem
             key={index}
-            item={item.product}
-            isSelected={props.isSelected === item.product}
-            selectRecent={() => props.selectRecent(item.product)}
+            item={item}
+            isSelected={props.isSelected === item}
+            selectRecent={() => props.selectRecent(item)}
           />
         ))}
       </div>

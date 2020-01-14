@@ -30,15 +30,15 @@ function App() {
     let products = [];
 
     switch (item) {
-      case "Laptops":
+      case "laptops":
         productName = item;
         products = laptops;
         break;
-      case "Mice":
+      case "mice":
         productName = item;
         products = mice;
         break;
-      case "Keyboards":
+      case "keyboards":
         productName = item;
         products = keyboards;
         break;
@@ -64,7 +64,11 @@ function App() {
       case "Home":
         return (
           <>
-            <Search selectRecent={selectRecent} isSelected={product.name} />
+            <Search
+              selectRecent={selectRecent}
+              isSelected={product.name}
+              noResult={noResult}
+            />
             {noResult ? (
               <NoSearchResults resultName={product.name} />
             ) : (
