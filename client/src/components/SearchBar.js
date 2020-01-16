@@ -67,9 +67,12 @@ export default function SearchBar(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.selectRecent(searchTerm.toLocaleLowerCase());
-    setSearchTerm("");
-    setActiveItem(-1);
+    if (searchTerm !== "") {
+      e.preventDefault();
+      props.selectRecent(searchTerm.toLocaleLowerCase());
+      setSearchTerm("");
+      setActiveItem(-1);
+    }
   };
 
   return (

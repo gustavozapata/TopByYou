@@ -42,7 +42,7 @@ export default function Laptops() {
               key={item.id}
               onClick={() => selectItem(item)}
             >
-              <img src={require(`../images/laptops/${item.image}`)} />
+              <img src={require(`../images/products/${item.image}`)} />
               <div
                 className={`${
                   currentItem.id === item.id ? "item-selected" : ""
@@ -60,7 +60,7 @@ export default function Laptops() {
         <div className="item-description">
           {currentItem.id ? (
             <div>
-              <img src={require(`../images/laptops/${currentItem.image}`)} />
+              <img src={require(`../images/products/${currentItem.image}`)} />
               <h3>{currentItem.name}</h3>
               <p>{currentItem.description}</p>
               <button className="button">Buy</button>

@@ -32,7 +32,7 @@ export default function Product(props) {
                   onClick={() => selectItem(item)}
                 >
                   <img
-                    src={require(`../images/laptops/${item.image}`)}
+                    src={require(`../images/products/${item.image}`)}
                     alt={item.image}
                   />
                   <div
@@ -56,7 +56,7 @@ export default function Product(props) {
               {currentItem.id ? (
                 <div>
                   <img
-                    src={require(`../images/laptops/${currentItem.image}`)}
+                    src={require(`../images/products/${currentItem.image}`)}
                     alt={currentItem.image}
                   />
                   <h3>{currentItem.name}</h3>

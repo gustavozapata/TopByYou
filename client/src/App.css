@@ -2,8 +2,11 @@
   --purple: #6a13f5;
   --light-purple: #ede5f8;
   --blue: #198cf0;
+  --yellow: #ffd400;
   --border-grey: #bcbcbc;
   --dark-grey: #2e2e2e;
+  --light-grey: #414141;
+  --red: #e24c4c;
 }
 .button {
   box-sizing: border-box;
@@ -28,6 +31,12 @@
 .label:hover {
   background-color: var(--light-purple);
   color: #000000;
+}
+.purple {
+  color: var(--purple);
+}
+.bold {
+  font-weight: 600;
 }
 
 .App {

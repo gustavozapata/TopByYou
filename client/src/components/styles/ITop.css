@@ -1,0 +1,54 @@
+.ITop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(150, 150, 150, 0.5);
+}
+.popup {
+  position: relative;
+  width: 500px;
+  background-color: white;
+  border-radius: 15px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-top: -230px;
+  margin-left: -250px;
+  padding: 20px;
+}
+.ITop .popup h1 {
+  font-size: 2.2em;
+  color: var(--purple);
+  margin: 20px auto;
+}
+.popup img {
+  width: 250px;
+}
+.loading-bar {
+  width: 400px;
+  height: 10px;
+  display: inline-block;
+  background: linear-gradient(to right, var(--yellow), var(--purple));
+}
+.popup p {
+  font-weight: 500;
+}
+.btn-cancel-itop {
+  border: 1.5px solid black;
+  margin-top: 20px;
+  box-sizing: border-box;
+  padding: 5px 8px;
+  font-family: "Montserrat";
+  font-size: 0.8em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-cancel-itop:hover {
+  background-color: var(--red);
+  color: white;
+}

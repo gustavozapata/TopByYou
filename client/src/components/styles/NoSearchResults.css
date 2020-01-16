@@ -1,5 +1,42 @@
 .NoSearchResult {
   text-align: left;
   width: 90%;
-  margin: 30px auto;
+  margin: 0px auto;
+}
+.NoSearchResult h1 {
+  font-size: 2em;
+  margin-top: 0;
+  color: var(--light-grey);
+}
+.itop-result {
+  text-align: center;
+  margin: 0px auto;
+}
+.itop-result img {
+  width: 210px;
+}
+.itop-result p {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+#click-itop-msg {
+  font-size: 0.9em;
+}
+.btn-itop {
+  background-color: var(--yellow);
+  border: 2px solid black;
+  box-sizing: border-box;
+  padding: 8px 15px;
+  font-family: "Montserrat";
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-itop:hover {
+  background-color: var(--purple);
+  border-color: black;
+  color: white;
 }
