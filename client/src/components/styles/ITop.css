@@ -1,4 +1,4 @@
-.ITop {
+.popup-bg {
   position: fixed;
   top: 0;
   right: 0;
@@ -26,11 +26,18 @@
 .popup img {
   width: 250px;
 }
-.loading-bar {
+.loading-container {
   width: 400px;
-  height: 10px;
+  margin: 10px auto;
+  text-align: left;
+}
+.loading-bar {
+  width: 0px;
+  height: 13px;
+  margin: 0;
   display: inline-block;
   background: linear-gradient(to right, var(--yellow), var(--purple));
+  transition: width 0.5s;
 }
 .popup p {
   font-weight: 500;
@@ -51,4 +58,11 @@
 .btn-cancel-itop:hover {
   background-color: var(--red);
   color: white;
+}
+
+.finished-iTop {
+  text-align: center;
+}
+.finished-iTop img {
+  width: 170px;
 }

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ITop from "./ITop";
 import "./styles/NoSearchResults.css";
 
 export default function NoSearchResults(props) {
   const [showITop, setShowITop] = useState(false);
+
+  useEffect(() => {
+    setShowITop(false);
+  }, [props.resultName]);
 
   const lunchITop = () => {
     setShowITop(true);
@@ -19,7 +23,7 @@ export default function NoSearchResults(props) {
       <h2>{props.resultName}</h2>
       {!showITop ? (
         <div className="itop-result">
-          <img src={require("../images/itop.png")} />
+          <img src={require("../images/itop.png")} alt="iTop" />
           <p>
             Can't find a specific product?
             <br />
@@ -33,7 +37,7 @@ export default function NoSearchResults(props) {
           </button>
         </div>
       ) : (
-        <ITop cancelITop={cancelITop} />
+        <ITop cancelITop={cancelITop} resultName={props.resultName} />
       )}
     </div>
   );
