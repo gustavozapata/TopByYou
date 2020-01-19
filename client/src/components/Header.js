@@ -18,6 +18,12 @@ export default function Header(props) {
             Home
           </li>
           <li
+            onClick={() => props.goTo("Login")}
+            className={active === "Login" ? "active" : ""}
+          >
+            Login
+          </li>
+          <li
             onClick={() => props.goTo("About")}
             className={active === "About" ? "active" : ""}
           >
@@ -28,12 +34,6 @@ export default function Header(props) {
             className={active === "Contact" ? "active" : ""}
           >
             Contact
-          </li>
-          <li
-            onClick={() => props.goTo("Login")}
-            className={active === "Login" ? "active" : ""}
-          >
-            Login
           </li>
         </ul>
       </nav>

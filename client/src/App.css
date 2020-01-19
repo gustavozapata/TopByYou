@@ -105,3 +105,20 @@ nav ul li {
   text-decoration: none;
   font-weight: 700;
 }
+
+/* Advert */
+.Advert {
+  margin: 20px 0;
+}
+.Advert p {
+  border: 1px solid rgb(230, 152, 9);
+  margin: 0;
+  padding: 10px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+.Advert h4 {
+  color: rgb(230, 152, 9);
+  margin: 0 0 5px 0;
+}

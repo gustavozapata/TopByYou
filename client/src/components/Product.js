@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Advert from "./Advert";
 import "./styles/Product.css";
 
 export default function Product(props) {
   const [currentItem, setCurrentItem] = useState({});
+  const [hasAdvert, setHasAdvert] = useState(false);
+
+  useEffect(() => {
+    if (props.productName === "laptops") {
+      setHasAdvert(true);
+    } else {
+      setHasAdvert(false);
+    }
+  }, [setHasAdvert, props.productName]);
 
   const selectItem = item => {
     const { id, name, image, votes, description } = item;
@@ -74,6 +84,7 @@ export default function Product(props) {
           <img src={require("../images/home.jpg")} alt="Home" />
         </div>
       )}
+      {hasAdvert && <Advert />}
     </div>
   );
 }
