@@ -18,10 +18,10 @@ export default function Header(props) {
             Home
           </li>
           <li
-            onClick={() => props.goTo("Login")}
-            className={active === "Login" ? "active" : ""}
+            onClick={() => props.goTo("Sign")}
+            className={active === "Sign" ? "active" : ""}
           >
-            Login
+            {props.user ? props.user : "Login"}
           </li>
           <li
             onClick={() => props.goTo("About")}

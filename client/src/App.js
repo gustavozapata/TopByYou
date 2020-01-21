@@ -10,12 +10,15 @@ import Footer from "./components/Footer";
 //pages
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login";
+import Sign from "./pages/Sign";
 
 //data
 import { laptops } from "./data/laptops";
 import { mice } from "./data/mice";
 import { keyboards } from "./data/keyboards";
+
+//third-party
+import axios from "axios";
 
 import "./App.css";
 
@@ -23,6 +26,21 @@ function App() {
   const [product, setProduct] = useState({});
   const [currentPage, setCurrentPage] = useState("Home");
   const [noResult, setNoResult] = useState(false);
+  const [logged, setLogged] = useState(false);
+  const [user, setUser] = useState("");
+
+  const logIn = (e, email, password) => {
+    axios
+      .post("http://localhost:4000/login", { email, password })
+      .then(res => {
+        if (res.data.logged) {
+          setLogged(true);
+          setUser(res.data.user);
+        }
+      })
+      .catch(err => console.log(err));
+    e.preventDefault();
+  };
 
   const selectRecent = item => {
     setNoResult(false);
@@ -80,8 +98,8 @@ function App() {
         return <About />;
       case "Contact":
         return <Contact />;
-      case "Login":
-        return <Login />;
+      case "Sign":
+        return <Sign logIn={logIn} />;
       default:
         return;
     }
@@ -90,7 +108,8 @@ function App() {
   return (
     <div className="App">
       <div id="viewport">
-        <Header goTo={goTo} active={currentPage} />
+        <Header user={user} goTo={goTo} active={currentPage} />
+        {logged ? <h2>Welcome {user}</h2> : ""}
         {renderPage()}
       </div>
       <Footer />
